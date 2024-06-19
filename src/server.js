@@ -2,10 +2,11 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import { env } from './utils/env.js';
+import { getAllContacts, getContactById } from './services/contacts.js';
 
 const port = Number(env('PORT', '3000'));
 
-const startServer = () => {
+const setupServer = () => {
   const app = express();
 
   app.use(
@@ -19,12 +20,20 @@ const startServer = () => {
   app.use(cors());
   app.use(express.json());
 
-  //тут код для обробки запитів
+  app.get('/contacts', async (req, res) => {
+    const contacts = await getAllContacts();
+
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully found contacts!',
+      data: contacts,
+    });
+  });
 
   app.use((req, res, next) => {
     res.status(404).json({
       status: 404,
-      message: 'Route not found',
+      message: 'Not found',
     });
   });
 
@@ -40,4 +49,4 @@ const startServer = () => {
   });
 };
 
-export default startServer;
+export default setupServer;
