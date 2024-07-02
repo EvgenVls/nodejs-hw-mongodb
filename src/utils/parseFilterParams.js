@@ -12,7 +12,8 @@ const parseIsFavourite = (isFavourite) => {
   const isString = typeof isFavourite === 'string';
   if (!isString) return;
 
-  // const isBoolean = Boolean(isFavourite);
+  if (!['true', 'false'].includes(isFavourite)) return;
+
   return Boolean(isFavourite);
 };
 
