@@ -20,12 +20,10 @@ const contactSchema = new Schema(
     },
     isFavourite: {
       type: Boolean,
-      required: true,
       default: false,
     },
     contactType: {
       type: String,
-      required: true,
       enum: contactTypeList,
       default: 'personal',
     },
