@@ -1,8 +1,13 @@
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
+
 import { env } from './utils/env.js';
+
+import userRouter from './routers/auth.js';
 import contactsRouter from './routers/contacts.js';
+
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
@@ -20,6 +25,7 @@ const setupServer = () => {
   );
 
   app.use(cors());
+  app.use(cookieParser());
   app.use(
     express.json({
       type: ['application/json', 'application/vnd.api+json'],
@@ -27,6 +33,7 @@ const setupServer = () => {
     }),
   );
 
+  app.use('/auth', userRouter);
   app.use('/contacts', contactsRouter);
 
   app.use(notFoundHandler);
