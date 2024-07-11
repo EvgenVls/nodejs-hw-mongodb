@@ -4,6 +4,7 @@ import {
   registerUserController,
   loginUserController,
   refreshSessionController,
+  logoutUserController,
 } from '../controllers/auth.js';
 
 import validateBody from '../utils/validateBody.js';
@@ -26,5 +27,7 @@ userRouter.post(
 );
 
 userRouter.post('/refresh', ctrlWrapper(refreshSessionController));
+
+userRouter.post('/logout', ctrlWrapper(logoutUserController));
 
 export default userRouter;
