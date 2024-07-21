@@ -11,6 +11,8 @@ import contactsRouter from './routers/contacts.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
+import { UPLOAD_DIR } from './constants/index.js';
+
 const port = Number(env('PORT', '3000'));
 
 const setupServer = () => {
@@ -32,6 +34,7 @@ const setupServer = () => {
       limit: '100kb',
     }),
   );
+  app.use('/public', express.static(UPLOAD_DIR));
 
   app.use('/auth', userRouter);
   app.use('/contacts', contactsRouter);

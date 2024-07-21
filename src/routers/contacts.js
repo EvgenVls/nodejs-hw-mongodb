@@ -13,6 +13,7 @@ import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
 import authenticate from '../middlewares/authenticate.js';
 import isValidId from '../middlewares/isValidId.js';
+import upload from '../middlewares/upload.js';
 
 import {
   createContactSchema,
@@ -33,6 +34,7 @@ contactsRouter.get(
 
 contactsRouter.post(
   '/',
+  upload.single('photo'),
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
@@ -40,6 +42,7 @@ contactsRouter.post(
 contactsRouter.patch(
   '/:contactId',
   isValidId,
+  upload.single('photo'),
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );

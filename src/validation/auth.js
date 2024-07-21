@@ -12,3 +12,12 @@ export const loginUserSchema = Joi.object({
   email: Joi.string().pattern(emailRegexp).required(),
   password: Joi.string().required(),
 });
+
+export const requestResetPasswordSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp).required(),
+});
+
+export const resetPasswordSchema = Joi.object({
+  password: Joi.string().required(),
+  token: Joi.string().required(),
+});
