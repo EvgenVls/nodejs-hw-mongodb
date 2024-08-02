@@ -10,6 +10,7 @@ import contactsRouter from './routers/contacts.js';
 
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import swaggerDocs from './middlewares/swaggerDocs.js';
 
 import { UPLOAD_DIR } from './constants/index.js';
 
@@ -35,6 +36,7 @@ const setupServer = () => {
     }),
   );
   app.use('/public', express.static(UPLOAD_DIR));
+  app.use('/api-docs', swaggerDocs());
 
   app.use('/auth', userRouter);
   app.use('/contacts', contactsRouter);
