@@ -1,0 +1,33 @@
+type: object
+required:
+  - _id
+  - name
+  - email
+  - password
+  - createAt
+  - updateAt
+properties:
+  _id:
+    description: "User's id"
+    type: string
+    example: 668f9cfa051992f52ebc9498
+  name:
+    description: 'Username'
+    type: string
+    example: 'Dmytro Ivanov'
+  email:
+    description: "User's email"
+    type: string
+    example: dmytro.ivanov@example.com
+  isFavourite:
+    description: "User's password"
+    type: string
+    example: $2b$10$VxISSTiy7FE0x19aCRJvLOPkzMIDjw93gSQQP0HZ6BYszHPSg8JDm
+  createAt:
+    description: 'User creation date and time'
+    type: date
+    example: 2024-07-11T08:51:06.388+00:00
+  updateAt:
+    description: 'User update date and time'
+    type: date
+    example: 2024-07-11T08:51:06.388+00:00

@@ -8,12 +8,12 @@ info:
   description: This is a documentation of Contacts app
 tags: # теги, що ви будете використовувати
   - name: Contacts
-    description: Operations about users.
+    description: Operations about contacts.
   - name: Auth
     description: Auth operations.
 servers:
   - url: http://localhost:3000
-  - url: https://example.com/api/v1 #посилання на задеплоєний сайт
+  - url: https://nodejs-hw-mongodb-contacts-99rz.onrender.com #посилання на задеплоєний сайт
 paths:
   /contacts:
     get:
@@ -23,10 +23,12 @@ paths:
   /contacts/{id}:
     get:
       $ref: ../swagger/paths/contacts/{id}/get.yaml
-    #patch:
-    #$ref: ../swagger/paths/contacts/{id}/patch.yaml
-    #delete:
-    #$ref: ../swagger/paths/contacts/{id}/delete.yaml
+    patch:
+      $ref: ../swagger/paths/contacts/{id}/patch.yaml
+    delete:
+      $ref: ../swagger/paths/contacts/{id}/delete.yaml
+  /auth/register:
+    $ref: ../swagger/paths/auth/register.yaml
 components:
   securitySchemes:
     bearerAuth:
