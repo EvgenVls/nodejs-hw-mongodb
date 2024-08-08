@@ -7,6 +7,7 @@ import {
   logoutUserController,
   requestResetEmailController,
   resetPasswordController,
+  getGoogleOAuthUrlController,
 } from '../controllers/auth.js';
 
 import validateBody from '../utils/validateBody.js';
@@ -32,6 +33,8 @@ userRouter.post(
   validateBody(loginUserSchema),
   ctrlWrapper(loginUserController),
 );
+
+userRouter.get('/get-oauth-url', ctrlWrapper(getGoogleOAuthUrlController));
 
 userRouter.post('/refresh', ctrlWrapper(refreshSessionController));
 
